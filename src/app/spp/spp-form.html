@@ -1,0 +1,56 @@
+<script src='../systemjs.config.js'></script>
+<div class="row">
+    <div class="card">
+        <div class="content">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>NIS <small>(Nomor Induk Siswa)</small></label>
+                            <ng2-completer class="form-control border-input" [textNoResults]="['Tidak ada data']" [textSearching]="['Sedanga mengambil...']"  [(ngModel)]="searchStr" [dataService]="dataService" [minSearchLength]="0" (keyup)=selectNis(searchStr)></ng2-completer>
+                        </div>
+                    </div>
+                </div>
+            <div *ngFor="let item of searchData">
+                <div *ngIf="item.nis==searchStr"> 
+                    <div class="row" >
+                        <div class="col-md-12 table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:20%"><b>Nama Murid</b></td>
+                                        <td style="width:30%">: {{item.nama}}</td>
+                                        <td style="width:20%">Nama Wali</td>
+                                        <td style="width:30%">: {{item.nama_wali}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kelas</td>
+                                        <td>: {{item.kelas}}</td>
+                                        <td>Tahun Masuk</td>
+                                        <td>: {{item.tahun_masuk}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align: top;">Tagihan</td>
+                                        <td> 
+                                            <div *ngFor="let item_tagihan of item.tagihan">
+                                                <input type="checkbox" checked=jumlahTagihan(item_tagihan.jumlah) value=""> {{item_tagihan.bulan}} Rp. {{item_tagihan.jumlah}}
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align: bottom;">Jumlah Pembayaran</td>
+                                        <td style="vertical-align: bottom;">:{{jumlah}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button style="width:100%" type="submit" class="btn btn-default"> Bayar</button>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

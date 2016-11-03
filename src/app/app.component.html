@@ -1,0 +1,65 @@
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text">
+                TP<small>Siswa</small>
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['spp']">
+                    <i class="ti-notepad"></i>
+                    <p>SPP</p>
+                </a>
+            </li>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['report']">
+                    <i class="ti-book"></i>
+                    <p>Report</p>
+                </a>
+            </li>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['grafik']">
+                    <i class="ti-panel"></i>
+                    <p>Grafik</p>
+                </a>
+            </li>
+            <hr>
+        </ul>
+    </div>
+</div>
+
+<div class="main-panel">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <ol class="breadcrumb navbar-brand"><breadcrumbs></breadcrumbs></ol>
+                <!--<a class="" style="text-transform: uppercase;" href="#">{{title}}</a>-->
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <i class="ti-power-off"></i>
+                            <p> Keluar</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container-fluid">
+          <router-outlet>
+          </router-outlet>
+        </div>
+    </div>
+</div>
+
