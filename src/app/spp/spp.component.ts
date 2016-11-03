@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Output} from '@angular/core';
 import { CompleterService, CompleterData } from 'ng2-completer';
 
 interface Student {
@@ -44,8 +44,11 @@ export class SppComponent {
         console.log(nis);
     }
 
-    jumlahTagihan(jumlah_tagihan:number){
-        this.jumlah = this.jumlah + jumlah_tagihan;
+    jumlahTagihan(jumlah_tagihan:number, event:any){
+        if(event.target.checked)
+            this.jumlah = this.jumlah + jumlah_tagihan;
+        else
+            this.jumlah = this.jumlah - jumlah_tagihan;
     }
 }
 

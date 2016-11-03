@@ -32,11 +32,11 @@
                                         <td style="vertical-align: top;">Tagihan</td>
                                         <td> 
                                             <div *ngFor="let item_tagihan of item.tagihan">
-                                                <input type="checkbox" checked=jumlahTagihan(item_tagihan.jumlah) value=""> {{item_tagihan.bulan}} Rp. {{item_tagihan.jumlah}}
+                                                <input type="checkbox" (change)="jumlahTagihan(item_tagihan.jumlah, $event)" value=""> {{item_tagihan.bulan}} Rp. {{item_tagihan.jumlah}}
                                             </div>
                                         </td>
                                         <td style="vertical-align: bottom;">Jumlah Pembayaran</td>
-                                        <td style="vertical-align: bottom;">:{{jumlah}}</td>
+                                        <td style="vertical-align: bottom;">: <b><u>{{jumlah}}</u></b></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <button style="width:100%" type="submit" class="btn btn-default"> Bayar</button>
+                            <button style="width:100%" data-toggle="modal" data-target="#myModal" [disabled]="jumlah==0" type="submit" class="btn btn-default"> Bayar</button>
                         </div>
                         <div class="col-md-4"></div>
                     </div>
@@ -53,4 +53,30 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Konfirmasi Pembayaran</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label>Jumlah  <small>yang harus dibayarkan</small></label>
+            <input type="text" disabled class="form-control border-input" value="{{jumlah}}">
+          </div>
+          <div class="form-group">
+            <label>Uang </label>
+            <input type="text" [ngModel]="uang" class="form-control border-input">
+          </div>
+          Kembalian : 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
 </div>
